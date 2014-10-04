@@ -26,9 +26,14 @@ public class Homework3 {
 	 **/
 
 	public static void smoosh(int[] ints) {
-		// Fill in your solution here. (Ours is twelve lines long, not counting
-		// blank lines or lines already present in this file.)
-
+		int i = 0;
+		while(i <= ints.length - 2){
+			if(ints[i] == ints[i+1] && ints[i] != -1){
+				shiftArrayToLeft(ints, i);				
+			} else{
+				i++;
+			}
+		}
 	}
 
 	/**
