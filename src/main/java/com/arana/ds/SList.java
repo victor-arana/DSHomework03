@@ -113,7 +113,15 @@ public class SList {
    **/
 
   public void squish() {
-    // Fill in your solution here.  (Ours is eleven lines long.)
+	  SListNode currentNode = head;
+	  while(currentNode.next != null){
+		  if(currentNode.item.equals(currentNode.next.item)){
+			  currentNode.next = currentNode.next.next;
+			  size--;
+		  }else{
+			  currentNode = currentNode.next;
+		  }
+	  }
   }
 
   /**
@@ -163,6 +171,7 @@ public class SList {
     testEmpty();
     testAfterInsertFront();
     testAfterInsertEnd();
+    testAfterSquish();
   }
 
     
@@ -259,5 +268,30 @@ public class SList {
 		       + lst1.toString());
     TestHelper.verify(lst1.toString().equals("[  5  6  7  ]"),
 		      "insertFront after insertEnd failed");
+  }
+  
+  private static void testAfterSquish(){
+	  SList lst2 = new SList();
+	  lst2.insertEnd(new Integer(0));
+	  lst2.insertEnd(new Integer(0));
+	  lst2.insertEnd(new Integer(0));
+	  lst2.insertEnd(new Integer(0));
+	  lst2.insertEnd(new Integer(1));
+	  lst2.insertEnd(new Integer(1));
+	  lst2.insertEnd(new Integer(0));
+	  lst2.insertEnd(new Integer(0));
+	  lst2.insertEnd(new Integer(0));
+	  lst2.insertEnd(new Integer(3));
+	  lst2.insertEnd(new Integer(3));
+	  lst2.insertEnd(new Integer(3));
+	  lst2.insertEnd(new Integer(3));
+	  lst2.insertEnd(new Integer(1));
+	  lst2.insertEnd(new Integer(1));
+	  lst2.insertEnd(new Integer(0));
+	  System.out.println();
+	  System.out.println("Here is a list before squish(): " + lst2.toString());
+	  System.out.println();
+	  lst2.squish();
+	  System.out.println("Here is a list after squish(): " + lst2.toString());
   }
 }
