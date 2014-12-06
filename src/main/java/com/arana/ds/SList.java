@@ -142,6 +142,7 @@ public class SList {
 		  size++;
 		  currentNode = currentNode.next.next;
 	  }
+	  currentNode.next =  new SListNode(currentNode.item);
   }
 
   /**
