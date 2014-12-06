@@ -136,7 +136,12 @@ public class SList {
    **/
 
   public void twin() {
-    // Fill in your solution here.  (Ours is seven lines long.)
+	  SListNode currentNode = head;
+	  while(currentNode.next != null){
+		  currentNode.next =  new SListNode(currentNode.item, currentNode.next);
+		  size++;
+		  currentNode = currentNode.next.next;
+	  }
   }
 
   /**
@@ -145,7 +150,7 @@ public class SList {
    **/
 
   public String toString() {
-    int i;
+    //int i;
     Object obj;
     String result = "[  ";
 
@@ -172,6 +177,7 @@ public class SList {
     testAfterInsertFront();
     testAfterInsertEnd();
     testAfterSquish();
+    testAfterTwin();
   }
 
     
@@ -290,8 +296,20 @@ public class SList {
 	  lst2.insertEnd(new Integer(0));
 	  System.out.println();
 	  System.out.println("Here is a list before squish(): " + lst2.toString());
-	  System.out.println();
 	  lst2.squish();
 	  System.out.println("Here is a list after squish(): " + lst2.toString());
+  }
+  
+  private static void testAfterTwin(){
+	  SList lst3 = new SList();
+	  lst3.insertEnd(new Integer(3));
+	  lst3.insertEnd(new Integer(7));
+	  lst3.insertEnd(new Integer(4));
+	  lst3.insertEnd(new Integer(2));
+	  lst3.insertEnd(new Integer(2));
+	  System.out.println();
+	  System.out.println("Here is a list before twin(): " + lst3.toString());
+	  lst3.twin();
+	  System.out.println("Here is a list after twin(): " + lst3.toString());  
   }
 }
